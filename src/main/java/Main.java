@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
-    private static final Logger log = LogManager.getLogger(Main.class);
+    static final Logger log = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws Exception {
         List<Horse> horses = List.of(
@@ -19,9 +19,8 @@ public class Main {
                 new Horse("Cherry", 3)
         );
         Hippodrome hippodrome = new Hippodrome(horses);
-
+        log.info("Начало скачек. Количество участников:" + hippodrome.getHorses().size());
         for (int i = 0; i < 100; i++) {
-            log.info("Начало скачек. Количество участников:" + hippodrome.getHorses().size());
             hippodrome.move();
             watch(hippodrome);
             TimeUnit.MILLISECONDS.sleep(200);
